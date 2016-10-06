@@ -133,4 +133,44 @@ public class Validator {
 		}
 		return i;
 	}
+	
+	/**
+	 * Prompts the user with a message and then retrieves what the user types as
+	 * a double data type.
+	 * 
+	 * @param sc
+	 * @param prompt
+	 * @return
+	 */
+	public static double getDouble(Scanner sc, String prompt) {
+		boolean isValid = false;
+		double d = 0;
+		while (isValid == false) {
+			System.out.print(prompt);
+			if (sc.hasNextDouble()) {
+				d = sc.nextDouble();
+				isValid = true;
+			} else {
+				System.out.println("\nERROR! Invalid double value. Try again.\n");
+			}
+			sc.nextLine();
+		}
+		return d;
+	}
+	
+	public static double getDouble(Scanner sc, String prompt, double min, double max) {
+		boolean isValid = false;
+		double d = 0;
+		while (isValid == false) {
+			d = getDouble(sc, prompt);
+			if (d < min) {
+				System.out.println("\nERROR! Must be greater than " + min + ".\n");
+			} else if (d > max) {
+				System.out.println("\nERROR! Must be less than " + max + ".\n");
+			} else {
+				isValid = true;
+			}
+		}
+		return d;
+	}
 }
