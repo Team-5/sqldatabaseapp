@@ -53,4 +53,44 @@ public class Validator {
 		}
 		return s;
 	}
+	
+	/**
+	 * Prompts the user with a message and then retrieves what the user types 
+	 * as an integer.
+	 * 
+	 * @param sc
+	 * @param prompt
+	 * @return
+	 */
+	public static int getInt(Scanner sc, String prompt) {
+		boolean isValid = false;
+		int i = 0;
+		while (isValid == false) {
+			System.out.print(prompt);
+			if (sc.hasNextInt()) {
+				i = sc.nextInt();
+				isValid = true;
+			} else {
+				System.out.println("\nERROR! Invalid integer value. Try again.\n");
+			}
+			sc.nextLine();
+		}
+		return i;
+	}
+	
+	public static int getInt(Scanner sc, String prompt, int min, int max) {
+		boolean isValid = false;
+		int i = 0;
+		while (isValid == false) {
+			i = getInt(sc, prompt);
+			if (i < min) {
+				System.out.println("\nERROR! Must be greater than " + min + ".\n");
+			} else if (i > max) {
+				System.out.println("\nERROR! Must be less than " + max +".\n");
+			} else {
+				isValid = true;
+			}
+		}
+		return i;
+	}
 }
