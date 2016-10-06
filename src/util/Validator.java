@@ -93,4 +93,44 @@ public class Validator {
 		}
 		return i;
 	}
+	
+	/**
+	 * Prompts the user with a message and then retrieves what the user types as
+	 * a long data type.
+	 * 
+	 * @param sc
+	 * @param prompt
+	 * @return
+	 */
+	public static long getLong(Scanner sc, String prompt) {
+		boolean isValid = false;
+		long i = 0;
+		while (isValid == false) {
+			System.out.print(prompt);
+			if (sc.hasNextLong()) {
+				i = sc.nextLong();
+				isValid = true;
+			} else {
+				System.out.println("\nERROR! Invalid long value. Try again.\n");
+			}
+			sc.nextLine();
+		}
+		return i;
+	}
+	
+	public static long getLong(Scanner sc, String prompt, long min, long max) {
+		boolean isValid = false;
+		long i = 0;
+		while (isValid == false) {
+			i = getLong(sc, prompt);
+			if (i < min) {
+				System.out.println("\nERROR! Must be greater than " + min + ".\n");
+			} else if (i > max) {
+				System.out.println("\nERROR! Must be less than " + max + ".\n");
+			} else {
+				isValid = true;
+			}
+		}
+		return i;
+	}
 }
