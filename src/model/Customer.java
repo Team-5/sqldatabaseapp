@@ -114,5 +114,4 @@ public class Customer {
 				this.getHomePhone(), this.getCity(), this.getState(), 
 				this.getAge());
 	}
-
 }

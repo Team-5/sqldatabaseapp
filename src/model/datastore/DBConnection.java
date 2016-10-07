@@ -15,7 +15,7 @@ import java.util.Properties;
  * @author Jason Whiting
  * @version 2016-10-6
  */
-public class DBConnection{
+public class DBConnection {
 	
 	public static Connection getConnection() {
 		Properties props = new Properties();
