@@ -19,10 +19,30 @@ import model.ICustomerDAO;
  * @version 2016-10-07
  */
 public class CustomerDAO implements ICustomerDAO{
+	
+	protected final static boolean DEBUG = true;
 
 	@Override
 	public void createRecord(Customer customer) {
+		final String QUERY = "insert into customer " +
+				"(id, firstName, lastName, homePhone, state, city, age) " +
+				"VALUES (null, ?, ?, ?, ?, null)";
 		
+		try (Connection con = DBConnection.getConnection();
+				PreparedStatement stmt = con.prepareStatement(QUERY);) {
+			stmt.setString(1, customer.getFirstName());
+			stmt.setString(2, customer.getLastName());
+			stmt.setString(3, customer.getHomePhone());
+			stmt.setString(4, customer.getState());
+			stmt.setString(5, customer.getCity());
+			stmt.setInt(6, customer.getAge());
+			if (DEBUG) {
+				System.out.println(stmt.toString());
+			}
+			stmt.executeUpdate();
+		} catch (SQLException ex) {
+			System.out.println("createRecord SQLException: " + ex.getMessage());
+		}
 	}
 
 	@Override
@@ -50,4 +70,14 @@ public class CustomerDAO implements ICustomerDAO{
 		
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		for (Customer customer : retrieveAllRecords()) {
+			sb.append(customer.toString()).append("\n");
+		}
+		
+		return sb.toString();
+	}
 }
