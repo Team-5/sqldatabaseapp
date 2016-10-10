@@ -14,7 +14,7 @@ import model.ICustomerDAO;
  * store. This version uses a MySQL database to store the data. It is multiuser
  * safe.
  * 
- * @author Jason Whiting
+ * @author Jason Whiting + Jeremy Wiles
  * @version 2016-10-07
  */
 public class CustomerDAO implements ICustomerDAO {
@@ -45,16 +45,88 @@ public class CustomerDAO implements ICustomerDAO {
 
 	@Override
 	public Customer retrieveCustomerByID(int id) {
-		return null;
+		final String QUERY = "select id, firstName, lastName, homePhone, state, city "
+				+ "age from customer where id = " + id;
+		
+		Costumer cus = null;
+		
+		try (Connection con = DBConnection.getConnection();
+				PreparedStatement stmt = con.prepareStatement(QUERY)) {
+			if (DEBUG) {
+				System.out.println(stmt.toString());
+			}
+			ResultSet rs = stmt.executeQuery(QUERY);
+			
+			if (rs.next()) {
+				cus = new Customer(
+						rs.getInt("id"),
+						rs.getString("firstName"),
+						rs.getString("lastName"),
+						rs.getString("homePhone"),
+						rs.getString("state"),
+						rs.getString("city"),
+						rs.getInt("age"));
+			}
+		} catch (SQLException ex) {
+			System.out.println("retrieveRecodById SQLException: "
+					+ ex.getMessage());
+		}
+		
+		
+		return cus;
 	}
 
 	@Override
 	public List<Customer> retrieveAllRecords() {
-		return null;
+		final List<C> myList = new ArrayList<>();
+        final String QUERY = "select id, firstName, lastName, homePhone, state, city "
+                + "age from customer";
+
+        try (Connection con = DBConnection.getConnection(); 
+                PreparedStatement stmt = con.prepareStatement(QUERY)) {
+            if (DEBUG) {
+                System.out.println(stmt.toString());
+            }
+            ResultSet rs = stmt.executeQuery(QUERY);
+
+            while (rs.next()) {
+                myList.add(new Employee(
+                        rs.getInt("id"), 
+                        rs.getString("firstName"), 
+                        rs.getString("lastName"),
+                        rs.getString("homePhone"), 
+                        rs.getString("state"),
+						rs.getString("city"),
+                        rs.getInt("age")));
+            }
+        } catch (SQLException ex) {
+            System.out.println("retrieveAllRecords SQLException: " + ex.getMessage());
+        }
+
+        return myList;
 	}
 
 	@Override
 	public void updateRecord(Customer updatedCustomer) {
+		final String QUERY = "update customer set lastName=?, firstName=?, "
+                + "homePhone=?, state=?, city=?, age=? where id=?";
+
+        try (Connection con = DBConnection.getConnection(); 
+                PreparedStatement stmt = con.prepareStatement(QUERY)) {
+            stmt.setString(1, updatedCustomer.getFirstName());
+            stmt.setString(2, updatedCustomer.getLastName());
+            stmt.setString(3, updatedCustomer.getHomePhone());
+            stmt.setString(4, updatedCustomer.getState());
+            stmt.setString(5, updatedCustomer.getCity());
+            stmt.setInt(6, updatedCustomer.getAge());
+            stmt.setInt(7, updatedCustomer.getId());
+            if (DEBUG) {
+                System.out.println(stmt.toString());
+            }
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("updateRecord SQLException: " + ex.getMessage());
+        }
 
 	}
 
