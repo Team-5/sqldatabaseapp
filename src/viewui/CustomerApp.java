@@ -52,7 +52,29 @@ public class CustomerApp {
 			 id = Validator.getInt(sc, "Employee ID to Retrieve: ");
 			 System.out.println(myList.retrieveCustomerByID(id));
 			 break;
+		 case "4":
+			 id = Validator.getInt(sc, "New customer id: ");
+			 firstName = Validator.getLine(sc, "First Name: ");
+			 lastName = Validator.getLine(sc,"Last Name: ");
+			 homePhone = Validator.getLine(sc,"Home Phone Number: ");
+			 city = Validator.getLine(sc, "City: ");
+			 state = Validator.getLine(sc, "State: ");
+			 age = Validator.getInt(sc, "Age: ");
+			 myList.updateRecord(new Customer(id, firstName, lastName, homePhone, city, state, age));
+			 break;
+		 case "5":
+			 id = Validator.getInt(sc, "Customer ID to Delete: ");
+			 System.out.println(myList.retrieveCustomerByID(id));
+			 String ok = Validator.getLine(sc, "Delete This Record? (y/n) ", "^[yYnN]$");
+			 if (ok.equalsIgnoreCase("Y")){
+				 myList.deleteRecord(id);
+			 }
+			 break;
 			 }
 	 }
  }
+ public static void main(String[] args) {
+	new CustomerApp();
+
+}
 }
