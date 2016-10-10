@@ -8,7 +8,7 @@ import java.util.List;
  * for this application. This program currently has only a database DAO
  * implementation. A file based DAO implementation was deemed unnecessary.
  * 
- * @author Jason Whiting
+ * @authors Lucas Johns and Jason Whiting
  * @version 2016-10-07
  */
 public interface ICustomerDAO {
