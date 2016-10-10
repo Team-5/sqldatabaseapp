@@ -15,6 +15,7 @@ import model.datastore.CustomerDAO;
  * @version 2016-10-08
  */
 public class CustomerApp {
+	
 	ICustomerDAO myList = new CustomerDAO();
 	Scanner sc = new Scanner(System.in);
 
@@ -23,9 +24,11 @@ public class CustomerApp {
 	}
 
 	private void menuloop() {
+		
 		int id, age;
 		String firstName, lastName, homePhone, city, state;
 		String choice = "1";
+		
 		while (!choice.equals("0")) {
 			System.out.println("\nCustomer App");
 			System.out.println("0 =Quit");
@@ -37,9 +40,11 @@ public class CustomerApp {
 			choice = Validator.getLine(sc, "number of choice: ", "^[0-5]$");
 
 			switch (choice) {
+			
 			case "1":
 				System.out.println(myList.toString());
 				break;
+				
 			case "2":
 				id = Validator.getInt(sc, "New customer id: ");
 				firstName = Validator.getLine(sc, "First Name: ");
@@ -50,10 +55,12 @@ public class CustomerApp {
 				age = Validator.getInt(sc, "Age: ");
 				myList.createRecord(new Customer(id, firstName, lastName, homePhone, city, state, age));
 				break;
+				
 			case "3":
 				id = Validator.getInt(sc, "Employee ID to Retrieve: ");
 				System.out.println(myList.retrieveCustomerByID(id));
 				break;
+				
 			case "4":
 				id = Validator.getInt(sc, "New customer id: ");
 				firstName = Validator.getLine(sc, "First Name: ");
@@ -64,6 +71,7 @@ public class CustomerApp {
 				age = Validator.getInt(sc, "Age: ");
 				myList.updateRecord(new Customer(id, firstName, lastName, homePhone, city, state, age));
 				break;
+				
 			case "5":
 				id = Validator.getInt(sc, "Customer ID to Delete: ");
 				System.out.println(myList.retrieveCustomerByID(id));
@@ -78,6 +86,5 @@ public class CustomerApp {
 
 	public static void main(String[] args) {
 		new CustomerApp();
-
 	}
 }

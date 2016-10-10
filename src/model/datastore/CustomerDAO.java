@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import model.Customer;
 import model.ICustomerDAO;
 
@@ -24,6 +23,7 @@ public class CustomerDAO implements ICustomerDAO {
 
 	@Override
 	public void createRecord(Customer customer) {
+		
 		final String QUERY = "insert into customer " + "(id, firstName, lastName, homePhone, state, city, age) "
 				+ "VALUES (null, ?, ?, ?, ?, null)";
 
@@ -70,12 +70,13 @@ public class CustomerDAO implements ICustomerDAO {
 
 	@Override
 	public String toString() {
+		
 		StringBuilder sb = new StringBuilder();
 
 		for (Customer customer : retrieveAllRecords()) {
 			sb.append(customer.toString()).append("\n");
 		}
-
+		
 		return sb.toString();
 	}
 }
