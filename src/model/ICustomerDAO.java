@@ -12,19 +12,19 @@ import java.util.List;
  * @version 2016-10-07
  */
 public interface ICustomerDAO {
-	
+
 	void createRecord(Customer customer);
-	
+
 	Customer retrieveCustomerByID(int id);
-	
+
 	List<Customer> retrieveAllRecords();
-	
+
 	void updateRecord(Customer updatedCustomer);
-	
+
 	void deleteRecord(int id);
-	
+
 	void deleteRecord(Customer customer);
-	
+
 	@Override
 	String toString();
 }

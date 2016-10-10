@@ -3,9 +3,9 @@ package util;
 import java.util.Scanner;
 
 /**
- * Prompts for and then validates console-based input. This program is
- * based on code written by Professor John Phillips, who based his program
- * on code from Murach's Java SE 6.
+ * Prompts for and then validates console-based input. This program is based on
+ * code written by Professor John Phillips, who based his program on code from
+ * Murach's Java SE 6.
  * 
  * @author Jason Whiting
  * @version 2016-10-06
@@ -13,8 +13,8 @@ import java.util.Scanner;
 public class Validator {
 
 	/**
-	 * Prompts the user with a message and then retrieves what the user
-	 * types as a String.
+	 * Prompts the user with a message and then retrieves what the user types as
+	 * a String.
 	 * 
 	 * @param sc
 	 * @param prompt
@@ -24,13 +24,13 @@ public class Validator {
 		System.out.print(prompt);
 		return sc.nextLine();
 	}
-	
+
 	/**
-	 * Prompts the user with a message and then retrieves what the user
-	 * types as a String. The 'regex' is a String that contains a regular
-	 * expression. The message repeats until the user enters a correct 
-	 * value. For example, a regular expression of "^[1234]$" would require
-	 * a '1' or a '2' or a '3' or a '4' to be entered.
+	 * Prompts the user with a message and then retrieves what the user types as
+	 * a String. The 'regex' is a String that contains a regular expression. The
+	 * message repeats until the user enters a correct value. For example, a
+	 * regular expression of "^[1234]$" would require a '1' or a '2' or a '3' or
+	 * a '4' to be entered.
 	 * 
 	 * @param sc
 	 * @param prompt
@@ -53,10 +53,10 @@ public class Validator {
 		}
 		return s;
 	}
-	
+
 	/**
-	 * Prompts the user with a message and then retrieves what the user types 
-	 * as an integer.
+	 * Prompts the user with a message and then retrieves what the user types as
+	 * an integer.
 	 * 
 	 * @param sc
 	 * @param prompt
@@ -77,7 +77,7 @@ public class Validator {
 		}
 		return i;
 	}
-	
+
 	public static int getInt(Scanner sc, String prompt, int min, int max) {
 		boolean isValid = false;
 		int i = 0;
@@ -86,14 +86,14 @@ public class Validator {
 			if (i < min) {
 				System.out.println("\nERROR! Must be greater than " + min + ".\n");
 			} else if (i > max) {
-				System.out.println("\nERROR! Must be less than " + max +".\n");
+				System.out.println("\nERROR! Must be less than " + max + ".\n");
 			} else {
 				isValid = true;
 			}
 		}
 		return i;
 	}
-	
+
 	/**
 	 * Prompts the user with a message and then retrieves what the user types as
 	 * a long data type.
@@ -117,7 +117,7 @@ public class Validator {
 		}
 		return i;
 	}
-	
+
 	public static long getLong(Scanner sc, String prompt, long min, long max) {
 		boolean isValid = false;
 		long i = 0;
@@ -133,7 +133,7 @@ public class Validator {
 		}
 		return i;
 	}
-	
+
 	/**
 	 * Prompts the user with a message and then retrieves what the user types as
 	 * a double data type.
@@ -157,7 +157,7 @@ public class Validator {
 		}
 		return d;
 	}
-	
+
 	public static double getDouble(Scanner sc, String prompt, double min, double max) {
 		boolean isValid = false;
 		double d = 0;

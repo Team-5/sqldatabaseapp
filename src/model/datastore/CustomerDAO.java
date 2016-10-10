@@ -12,24 +12,22 @@ import model.ICustomerDAO;
 
 /**
  * EmployeeDAO (Data Access Object) handles all interactions with the data
- * store. This version uses a MySQL database to store the data. It is
- * multiuser safe.
+ * store. This version uses a MySQL database to store the data. It is multiuser
+ * safe.
  * 
  * @author Jason Whiting
  * @version 2016-10-07
  */
-public class CustomerDAO implements ICustomerDAO{
-	
+public class CustomerDAO implements ICustomerDAO {
+
 	protected final static boolean DEBUG = true;
 
 	@Override
 	public void createRecord(Customer customer) {
-		final String QUERY = "insert into customer " +
-				"(id, firstName, lastName, homePhone, state, city, age) " +
-				"VALUES (null, ?, ?, ?, ?, null)";
-		
-		try (Connection con = DBConnection.getConnection();
-				PreparedStatement stmt = con.prepareStatement(QUERY);) {
+		final String QUERY = "insert into customer " + "(id, firstName, lastName, homePhone, state, city, age) "
+				+ "VALUES (null, ?, ?, ?, ?, null)";
+
+		try (Connection con = DBConnection.getConnection(); PreparedStatement stmt = con.prepareStatement(QUERY);) {
 			stmt.setString(1, customer.getFirstName());
 			stmt.setString(2, customer.getLastName());
 			stmt.setString(3, customer.getHomePhone());
@@ -57,27 +55,27 @@ public class CustomerDAO implements ICustomerDAO{
 
 	@Override
 	public void updateRecord(Customer updatedCustomer) {
-		
+
 	}
 
 	@Override
 	public void deleteRecord(int id) {
-		
+
 	}
 
 	@Override
 	public void deleteRecord(Customer customer) {
-		
+
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		
+
 		for (Customer customer : retrieveAllRecords()) {
 			sb.append(customer.toString()).append("\n");
 		}
-		
+
 		return sb.toString();
 	}
 }

@@ -15,7 +15,7 @@ public class Customer {
 	private String city;
 	private String state;
 	private int age;
-	
+
 	public Customer() {
 		id = 0;
 		firstName = "";
@@ -36,82 +36,65 @@ public class Customer {
 		this.age = age;
 	}
 
-
 	public int getId() {
 		return id;
 	}
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
 	public String getFirstName() {
 		return firstName;
 	}
-
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-
 	public String getLastName() {
 		return lastName;
 	}
-
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-
 	public String getHomePhone() {
 		return homePhone;
 	}
-
 
 	public void setHomePhone(String homePhone) {
 		this.homePhone = homePhone;
 	}
 
-
 	public String getCity() {
 		return city;
 	}
-
 
 	public void setCity(String city) {
 		this.city = city;
 	}
 
-
 	public String getState() {
 		return state;
 	}
-
 
 	public void setState(String state) {
 		this.state = state;
 	}
 
-
 	public int getAge() {
 		return age;
 	}
-
 
 	public void setAge(int age) {
 		this.age = age;
 	}
 
-
 	@Override
 	public String toString() {
-		return String.format("%5d : %s, %s, %s, %s, %s, %3d", 
-				this.getId(), this.getFirstName(), this.getLastName(), 
-				this.getHomePhone(), this.getCity(), this.getState(), 
-				this.getAge());
+		return String.format("%5d : %s, %s, %s, %s, %s, %3d", this.getId(), this.getFirstName(), this.getLastName(),
+				this.getHomePhone(), this.getCity(), this.getState(), this.getAge());
 	}
 }
