@@ -115,12 +115,33 @@ public class CustomerDAO implements ICustomerDAO {
 
 	@Override
 	public void deleteRecord(int id) {
-
-	}
+final String QUERY = "delete from customer where customer Id = ?";
+try (Connection con = DBConnection.getConnection();
+		PreparedStatement stmt =con.prepareStatement(QUERY){
+			stmt.setInt(1, id);
+			if (DEBUG){
+				System.out.println(stmt.toString());
+			}
+			stmt.executeUpdate();
+		}catch (SQLException ex){
+				System.out.println("deleteRecord SQLException: " + ex.getMessage());
+			}
+		}
+	
 
 	@Override
 	public void deleteRecord(Customer customer) {
-
+		final String QUERY = "delete from customer where customer Id = ?";
+		try (Connection con = DBConnection.getConnection();
+				PreparedStatement stmt =con.prepareStatement(QUERY){
+					stmt.setInt(1, customer.getId);
+					if (DEBUG){
+						System.out.println(stmt.toString());
+					}
+					stmt.executeUpdate();
+				}catch (SQLException ex){
+						System.out.println("deleteRecord SQLException: " + ex.getMessage());
+					}
 	}
 
 	@Override
