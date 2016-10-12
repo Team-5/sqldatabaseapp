@@ -3,7 +3,7 @@ package model;
 /**
  * The Customer class represents a single customer.
  * 
- * @author Lisa Caswell
+ * @author Lisa Caswell and Jason Whiting
  * @version 2016-10-07
  */
 public class Customer {

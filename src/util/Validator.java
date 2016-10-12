@@ -38,10 +38,10 @@ public class Validator {
 	 * @return
 	 */
 	public static String getLine(Scanner sc, String prompt, String regex) {
-		
+
 		boolean isValid = false;
 		String s = "";
-		
+
 		while (isValid == false) {
 			System.out.print(prompt);
 			if (sc.hasNextLine()) {
@@ -65,10 +65,10 @@ public class Validator {
 	 * @return
 	 */
 	public static int getInt(Scanner sc, String prompt) {
-		
+
 		boolean isValid = false;
 		int i = 0;
-		
+
 		while (isValid == false) {
 			System.out.print(prompt);
 			if (sc.hasNextInt()) {
@@ -83,10 +83,10 @@ public class Validator {
 	}
 
 	public static int getInt(Scanner sc, String prompt, int min, int max) {
-		
+
 		boolean isValid = false;
 		int i = 0;
-		
+
 		while (isValid == false) {
 			i = getInt(sc, prompt);
 			if (i < min) {
@@ -109,10 +109,10 @@ public class Validator {
 	 * @return
 	 */
 	public static long getLong(Scanner sc, String prompt) {
-		
+
 		boolean isValid = false;
 		long i = 0;
-		
+
 		while (isValid == false) {
 			System.out.print(prompt);
 			if (sc.hasNextLong()) {
@@ -127,10 +127,10 @@ public class Validator {
 	}
 
 	public static long getLong(Scanner sc, String prompt, long min, long max) {
-		
+
 		boolean isValid = false;
 		long i = 0;
-		
+
 		while (isValid == false) {
 			i = getLong(sc, prompt);
 			if (i < min) {
@@ -153,10 +153,10 @@ public class Validator {
 	 * @return
 	 */
 	public static double getDouble(Scanner sc, String prompt) {
-		
+
 		boolean isValid = false;
 		double d = 0;
-		
+
 		while (isValid == false) {
 			System.out.print(prompt);
 			if (sc.hasNextDouble()) {
@@ -171,10 +171,10 @@ public class Validator {
 	}
 
 	public static double getDouble(Scanner sc, String prompt, double min, double max) {
-		
+
 		boolean isValid = false;
 		double d = 0;
-		
+
 		while (isValid == false) {
 			d = getDouble(sc, prompt);
 			if (d < min) {

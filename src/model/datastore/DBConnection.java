@@ -18,10 +18,10 @@ import java.util.Properties;
 public class DBConnection {
 
 	public static Connection getConnection() {
-		
+
 		Properties props = new Properties();
 		Connection con = null;
-		
+
 		try {
 			props.load(new FileInputStream("res/mysql/db.properties"));
 			Class.forName(props.getProperty("DB_DRIVER_CLASS"));

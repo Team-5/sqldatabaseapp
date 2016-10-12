@@ -11,11 +11,11 @@ import model.datastore.CustomerDAO;
  * menu-driven customer management program. This program demonstrates only a
  * MySQL based solution.
  * 
- * @author Lisa Caswell
+ * @authors Lisa Caswell and Jason Whiting
  * @version 2016-10-08
  */
 public class CustomerApp {
-	
+
 	ICustomerDAO myList = new CustomerDAO();
 	Scanner sc = new Scanner(System.in);
 
@@ -24,58 +24,58 @@ public class CustomerApp {
 	}
 
 	private void menuloop() {
-		
+
 		int id, age;
 		String firstName, lastName, homePhone, city, state;
 		String choice = "1";
-		
+
 		while (!choice.equals("0")) {
 			System.out.println("\nCustomer App");
-			System.out.println("0 =Quit");
+			System.out.println("0 = Quit");
 			System.out.println("1 = List All Records");
-			System.out.println("2 =Create New Record");
+			System.out.println("2 = Create New Record");
 			System.out.println("3 = Retrieve Record");
-			System.out.println("4 =Update Record");
-			System.out.println("5 =Delete Record");
+			System.out.println("4 = Update Record");
+			System.out.println("5 = Delete Record");
 			choice = Validator.getLine(sc, "number of choice: ", "^[0-5]$");
 
 			switch (choice) {
-			
+
 			case "1":
 				System.out.println(myList.toString());
 				break;
-				
+
 			case "2":
 				id = Validator.getInt(sc, "New customer id: ");
-				firstName = Validator.getLine(sc, "First Name: ");
-				lastName = Validator.getLine(sc, "Last Name: ");
-				homePhone = Validator.getLine(sc, "Home Phone Number: ");
+				firstName = Validator.getLine(sc, "First name: ");
+				lastName = Validator.getLine(sc, "Last name: ");
+				homePhone = Validator.getLine(sc, "Home phone number: ");
 				city = Validator.getLine(sc, "City: ");
 				state = Validator.getLine(sc, "State: ");
 				age = Validator.getInt(sc, "Age: ");
 				myList.createRecord(new Customer(id, firstName, lastName, homePhone, city, state, age));
 				break;
-				
+
 			case "3":
 				id = Validator.getInt(sc, "Employee ID to Retrieve: ");
 				System.out.println(myList.retrieveCustomerByID(id));
 				break;
-				
+
 			case "4":
 				id = Validator.getInt(sc, "New customer id: ");
-				firstName = Validator.getLine(sc, "First Name: ");
-				lastName = Validator.getLine(sc, "Last Name: ");
-				homePhone = Validator.getLine(sc, "Home Phone Number: ");
+				firstName = Validator.getLine(sc, "First name: ");
+				lastName = Validator.getLine(sc, "Last name: ");
+				homePhone = Validator.getLine(sc, "Home phone number: ");
 				city = Validator.getLine(sc, "City: ");
 				state = Validator.getLine(sc, "State: ");
 				age = Validator.getInt(sc, "Age: ");
 				myList.updateRecord(new Customer(id, firstName, lastName, homePhone, city, state, age));
 				break;
-				
+
 			case "5":
-				id = Validator.getInt(sc, "Customer ID to Delete: ");
+				id = Validator.getInt(sc, "Customer id to delete: ");
 				System.out.println(myList.retrieveCustomerByID(id));
-				String ok = Validator.getLine(sc, "Delete This Record? (y/n) ", "^[yYnN]$");
+				String ok = Validator.getLine(sc, "Delete this record? (y/n) ", "^[yYnN]$");
 				if (ok.equalsIgnoreCase("Y")) {
 					myList.deleteRecord(id);
 				}

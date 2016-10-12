@@ -14,13 +14,17 @@ import model.ICustomerDAO;
  * store. This version uses a MySQL database to store the data. It is multiuser
  * safe.
  * 
- * @authors Jason Whiting and Jeremy Wiles
+ * @authors Jason Whiting, Jeremy Wiles, and Willie Scott
  * @version 2016-10-07
  */
 public class CustomerDAO implements ICustomerDAO {
 
 	protected final static boolean DEBUG = true;
 
+	/**
+	 * The createRecord method will create a single customer object with the
+	 * information provided by the user.
+	 */
 	@Override
 	public void createRecord(Customer customer) {
 
@@ -43,9 +47,13 @@ public class CustomerDAO implements ICustomerDAO {
 		}
 	}
 
+	/**
+	 * The retrieveCustomerById method will search the database for the id
+	 * provided by the user and return the corresponding customer object.
+	 */
 	@Override
 	public Customer retrieveCustomerByID(int id) {
-		
+
 		final String QUERY = "select id, firstName, lastName, homePhone, state, city " + "age from customer where id = "
 				+ id;
 		Customer cus = null;
@@ -55,7 +63,7 @@ public class CustomerDAO implements ICustomerDAO {
 				System.out.println(stmt.toString());
 			}
 			ResultSet rs = stmt.executeQuery(QUERY);
-			
+
 			if (rs.next()) {
 				cus = new Customer(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"),
 						rs.getString("homePhone"), rs.getString("state"), rs.getString("city"), rs.getInt("age"));
@@ -63,10 +71,14 @@ public class CustomerDAO implements ICustomerDAO {
 		} catch (SQLException ex) {
 			System.out.println("retrieveRecodById SQLException: " + ex.getMessage());
 		}
-		
+
 		return cus;
 	}
 
+	/**
+	 * The retrieveAllRecords method will search the database and retrieve all
+	 * customer objects.
+	 */
 	@Override
 	public List<Customer> retrieveAllRecords() {
 
@@ -90,6 +102,11 @@ public class CustomerDAO implements ICustomerDAO {
 		return myList;
 	}
 
+	/**
+	 * The updateRecord method will search the database for a particular
+	 * customer object and replace its information with the information provided
+	 * by the user.
+	 */
 	@Override
 	public void updateRecord(Customer updatedCustomer) {
 		final String QUERY = "update customer set lastName=?, firstName=?, "
@@ -113,35 +130,37 @@ public class CustomerDAO implements ICustomerDAO {
 
 	}
 
+	/**
+	 * The deleteRecord method will search the database for either the id or the
+	 * customer object provided by the user, depending on which is given. It
+	 * will then delete that corresponding customer object.
+	 */
 	@Override
 	public void deleteRecord(int id) {
-final String QUERY = "delete from customer where customer Id = ?";
-try (Connection con = DBConnection.getConnection();
-		PreparedStatement stmt =con.prepareStatement(QUERY)){
+		final String QUERY = "delete from customer where customer Id = ?";
+		try (Connection con = DBConnection.getConnection(); PreparedStatement stmt = con.prepareStatement(QUERY)) {
 			stmt.setInt(1, id);
-			if (DEBUG){
+			if (DEBUG) {
 				System.out.println(stmt.toString());
 			}
 			stmt.executeUpdate();
-		}catch (SQLException ex){
-				System.out.println("deleteRecord SQLException: " + ex.getMessage());
-			}
+		} catch (SQLException ex) {
+			System.out.println("deleteRecord SQLException: " + ex.getMessage());
 		}
-	
+	}
 
 	@Override
 	public void deleteRecord(Customer customer) {
 		final String QUERY = "delete from customer where customer Id = ?";
-		try (Connection con = DBConnection.getConnection();
-				PreparedStatement stmt =con.prepareStatement(QUERY)){
-					stmt.setInt(1, customer.getId());
-					if (DEBUG){
-						System.out.println(stmt.toString());
-					}
-					stmt.executeUpdate();
-				}catch (SQLException ex){
-						System.out.println("deleteRecord SQLException: " + ex.getMessage());
-					}
+		try (Connection con = DBConnection.getConnection(); PreparedStatement stmt = con.prepareStatement(QUERY)) {
+			stmt.setInt(1, customer.getId());
+			if (DEBUG) {
+				System.out.println(stmt.toString());
+			}
+			stmt.executeUpdate();
+		} catch (SQLException ex) {
+			System.out.println("deleteRecord SQLException: " + ex.getMessage());
+		}
 	}
 
 	@Override
