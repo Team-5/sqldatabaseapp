@@ -117,7 +117,7 @@ public class CustomerDAO implements ICustomerDAO {
 	public void deleteRecord(int id) {
 final String QUERY = "delete from customer where customer Id = ?";
 try (Connection con = DBConnection.getConnection();
-		PreparedStatement stmt =con.prepareStatement(QUERY){
+		PreparedStatement stmt =con.prepareStatement(QUERY)){
 			stmt.setInt(1, id);
 			if (DEBUG){
 				System.out.println(stmt.toString());
@@ -133,8 +133,8 @@ try (Connection con = DBConnection.getConnection();
 	public void deleteRecord(Customer customer) {
 		final String QUERY = "delete from customer where customer Id = ?";
 		try (Connection con = DBConnection.getConnection();
-				PreparedStatement stmt =con.prepareStatement(QUERY){
-					stmt.setInt(1, customer.getId);
+				PreparedStatement stmt =con.prepareStatement(QUERY)){
+					stmt.setInt(1, customer.getId());
 					if (DEBUG){
 						System.out.println(stmt.toString());
 					}
