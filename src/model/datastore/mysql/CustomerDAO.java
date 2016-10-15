@@ -1,4 +1,4 @@
-package model.datastore;
+package model.datastore.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

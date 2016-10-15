@@ -4,7 +4,8 @@ import util.Validator;
 import java.util.Scanner;
 import model.Customer;
 import model.ICustomerDAO;
-import model.datastore.CustomerDAO;
+//import model.datastore.file.CustomerDAO;
+import model.datastore.mysql.CustomerDAO;
 
 /**
  * CustomerApp is the starting point for running this console-oriented

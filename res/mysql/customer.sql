@@ -1,4 +1,4 @@
-use s2emp;
+use sqldatabaseapp;
 drop table if exists employee;
 create table customer (
   id int unsigned not null auto_increment,

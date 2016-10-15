@@ -1,4 +1,4 @@
-package model.datastore;
+package model.datastore.mysql;
 
 import java.io.FileInputStream;
 import java.io.IOException;
