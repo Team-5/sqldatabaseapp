@@ -84,8 +84,8 @@ public class CustomerApp {
 				}
 				break;
                         case "6":
-                                int min = Validator.getInt(sc,"Minimum age");
-                                int max = Validator.getInt(sc,"Maximum age");
+                                int min = Validator.getInt(sc,"Minimum age: ");
+                                int max = Validator.getInt(sc,"Maximum age: ");
                                 List<Customer> group = myList.getAgeGroup(min,max);
                                 for(Customer c : group){
                                     System.out.println(c.toString());
