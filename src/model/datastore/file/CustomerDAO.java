@@ -154,4 +154,17 @@ public class CustomerDAO implements ICustomerDAO {
 		return sb.toString();
 	}
 
+    @Override
+    public List<Customer> getAgeGroup(int min, int max){
+        List<Customer> agegroup = new ArrayList<>();
+
+        for(Customer c: retrieveAllRecords()){
+            if(c.getAge() >= min && c.getAge() <=max){
+                agegroup.add(c);
+            }
+        }
+
+        return agegroup;
+    }
+
 }

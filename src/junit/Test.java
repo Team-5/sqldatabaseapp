@@ -1,6 +1,6 @@
 package junit;
 
-import model.datastore.DBConnection;
+import model.datastore.mysql.DBConnection;
 
 import static org.junit.Assert.assertNotNull;
 
